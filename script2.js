@@ -5,10 +5,8 @@ const fetchData = function () {
   fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       createElement(data);
       displayDropDown(data);
-
     })
     .catch((err) => {
       console.log(err);
@@ -36,6 +34,7 @@ const handleErr = function () {
 document.addEventListener("DOMContentLoaded", function () {
   const createStartBtn = function () {
     // start button factory function
+
     const wrapperDiv = document.createElement("div");
     const startBtn = document.createElement("button");
     wrapperDiv.classList.add("wrapperDiv");
@@ -61,13 +60,12 @@ const displayDropDown = function (data) {
   let parentdiv = document.querySelector(".dropdown");
   let parentDivList = document.getElementById("categoryList");
 
-  console.log("search created");
-
   let dropdownMenuBtn = `
      <div>
-        <button class="dropDownMenuBtn">Categories</button>
+         <button class="dropDownMenuBtn">Categories</button>
        <div> `;
   let dropDownList = `
+  
        <li class="allProducts dropdownMenu">All Products</li>
         <ul class="dropdownMenu">
           <li class="women's clothing">Ladies</li>
@@ -82,7 +80,6 @@ const displayDropDown = function (data) {
   $(".dropDownMenuBtn").click(function () {
     $(".dropdownMenu").slideToggle();
   });
-  console.log("serach created 222");
 
   let dropdownMenuList = document.querySelectorAll(".dropdownMenu li");
   dropdownMenuList.forEach(function (item) {
@@ -108,7 +105,6 @@ const displayDropDown = function (data) {
 // appends the API elements to the product lis
 
 const createElement = function (data) {
-  console.log("createElement");
   const header = document.getElementById("header");
   header.innerHTML = `
   <div id="categoryList"></div>
@@ -116,9 +112,11 @@ const createElement = function (data) {
     <h1>Trendy Treasures</h1>
   </div>
   <div id="icons">
-    <img id="member" src="user.png" alt="" />
-    <img id="cart" src="shopping-cart.png" alt="cart" />
-  </div>`;
+      <img id="member" class = "icon" src="user.png" alt="login" title="Login" />
+      <img id="cart" class = "icon" src="shopping-cart.png" alt="cart" title = "See your cart" />
+      <img id="home" class = "icon" src="home.png" alt="home" title = "HOME" />
+   
+    </div>`;
 
   let products = "";
   data.forEach((values) => {
@@ -186,19 +184,8 @@ const printStars = function (number) {
   return result;
 };
 
-// adding ites to shopcart
-
-//const addItemsToCart = function(){
-/* $(".addToCartBtn").click(function () {
-  const $product = $(this).closest(".product");
-  const title = $product.find(".productTitle").text();
-  const price = $product.find(".price").text();
-  cartObject[title] = price;
-  console.log(cartObject);
-  console.log("cart ok");
-});*/
-
-let cart = {};
+const cart = {};
+export { cart };
 
 $(document).on("click", ".addToCartBtn", function () {
   var $product = $(this).closest(".product");
