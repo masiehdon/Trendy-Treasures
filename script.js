@@ -124,7 +124,7 @@ const createElement = function (data) {
                   <p >${values.category.toUpperCase()}</p>
                 <img class="product-img" src=${values.image} >
                 <h2 class="productTitle">${values.title}</h2>
-                <div>
+                <div id= "btnWrapper">
                 <button class= "displayDescription btn">Show more</button>
                 <button class= "addToCartBtn btn">Add to cart</button>
                 <p class="description">${values.description}</p>
