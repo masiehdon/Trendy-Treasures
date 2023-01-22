@@ -101,7 +101,15 @@ body {
   position: relative;
   text-align: center;
   white-space: nowrap;
- 
+}
+
+ #header h1 {
+  font-size: 3em;
+  font-family: "Playfair Display", serif; 
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+
 }
 #tt{ 
   display: flex;
@@ -124,7 +132,11 @@ text-align: center;
   right: .8em;
 }
 
-#cart, #member {
+.icon:hover{
+  cursor: pointer;
+}
+
+#cart, #member, #home {
   width: 1.5em;
   margin: .2em .5em ;
 }
@@ -221,17 +233,11 @@ box-shadow: -webkit-box-shadow: 5px 5px 15px 14px #000000;
 box-shadow: 5px 5px 15px 14px #000000;
 }
 
-#header h1 {
-  font-size: 3rem;
-  font-family: "Playfair Display", serif; 
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  font-weight: bold;
-}
+
 
 main{
 
-background: #8B88C9;
+background: #afafb0;
 background: -webkit-linear-gradient(top left, #8B88C9, #6d9fe6);
 background: -moz-linear-gradient(top left, #8B88C9, #3268B2);
 background: linear-gradient(to bottom right, #8B88C9, #3268B2);
@@ -367,3 +373,335 @@ footer li:hover {
   font-size: 1em;
   text-align: center;
 }
+
+/* Shopping cart */
+
+#shopping-cart {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+#shopping-cart h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#shopping-cart ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.item-name {
+  flex: 1;
+}
+
+.item-price {
+  margin-right: 10px;
+}
+
+.remove-item {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-item:hover {
+  background-color: #cc0000;
+}
+
+#cart-total {
+  margin-top: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hidden{
+display: none;
+height: 0;
+}
+
+/* CSS for screens smaller than 320px */
+@media screen and (max-width: 320px) {
+  * { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+body{
+  min-height: 100vh;
+  width: 100%;
+}
+#header{
+  height: 10%;
+}
+#header h1 {
+  display: none;
+  
+}
+
+  #cart, #member, #home {
+      width: .5em;
+    margin: .2em .5em ;
+  }
+
+  .product { 
+    display: inline-block;
+   align-items: center;
+   width: 90%;
+   margin: .5rem;
+   padding: 1rem;
+  }
+  .product-list {
+    display: block;
+    margin: 0;
+   padding: 0;
+   width: 100%;
+   
+  }
+
+  .product img {
+    width: 100px;
+    height: 100px;
+  }
+
+  #btnWrapper{
+   text-align: center;
+  }
+  .btn{
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 16px;
+    border-radius: 6px;
+    color: #fff;
+    height: 30px;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+   } 
+}
+
+/* CSS for screens between 320px and 480px */
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  * { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+body{
+  min-height: 100vh;
+  width: 100%;
+}
+#header{
+  height: 10%;
+}
+
+#header h1 {
+  font-size: 1em;
+  font-family: "Playfair Display", serif; 
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+
+}
+
+  #cart, #member, #home {
+      width: .5em;
+    margin: .2em .5em ;
+  }
+
+  .dropDownMenuBtn {
+    order: -1;
+    border: none;
+    color: #54b3d6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .6em;
+    letter-spacing: 0.1em;
+    left: .8em;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    bottom: 0;
+    padding: 0.5em;
+    position: absolute;
+    text-transform: uppercase;
+  }
+
+  .dropdownMenu ul li {
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #2a032f;
+    cursor: pointer;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 10%;
+   }
+  
+main{
+  align-items: center;
+}
+  .product { 
+    display: inline-block;
+   align-items: center;
+   width: 90%;
+   margin: .5rem;
+   padding: 1rem;
+  }
+
+  .product-list {
+    display: block;
+    margin: 0;
+   padding: 0;
+   width: 100%;
+   
+  }
+
+  .product img {
+    width: 100px;
+    height: 100px;
+  }
+
+  #btnWrapper{
+   text-align: center;
+  }
+  .btn{
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 16px;
+    border-radius: 6px;
+    color: #fff;
+    height: 30px;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+   } 
+}
+/* CSS for screens between 480px and 768px */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  * { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+body{
+  min-height: 100vh;
+  width: 100%;
+}
+#header{
+  height: 10%;
+}
+
+#header h1 {
+  font-size: 1em;
+  font-family: "Playfair Display", serif; 
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+
+}
+
+  #cart, #member, #home {
+      width: .5em;
+    margin: .2em .5em ;
+  }
+
+  .dropDownMenuBtn {
+    order: -1;
+    border: none;
+    color: #54b3d6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .6em;
+    letter-spacing: 0.1em;
+    left: .8em;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    bottom: 0;
+    padding: 0.5em;
+    position: absolute;
+    text-transform: uppercase;
+  }
+
+  .dropdownMenu ul li {
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #2a032f;
+    cursor: pointer;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
+    transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 10%;
+   }
+  
+main{
+  align-items: center;
+}
+  .product { 
+    display: inline-block;
+   align-items: center;
+   width: 90%;
+   margin: .5rem;
+   padding: 1rem;
+  }
+
+  .product-list {
+    display: block;
+    margin: 0;
+   padding: 0;
+   width: 100%;
+   
+  }
+
+  .product img {
+    width: 100px;
+    height: 100px;
+  }
+
+  #btnWrapper{
+   text-align: center;
+  }
+  .btn{
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 16px;
+    border-radius: 6px;
+    color: #fff;
+    height: 30px;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+   } 
+}
+
