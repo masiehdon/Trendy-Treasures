@@ -185,7 +185,7 @@ const printStars = function (number) {
 };
 
 const cart = {};
-export { cart };
+
 
 $(document).on("click", ".addToCartBtn", function () {
   var $product = $(this).closest(".product");
