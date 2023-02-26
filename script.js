@@ -5,8 +5,10 @@ const fetchData = function () {
   fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
       createElement(data);
       displayDropDown(data);
+    categoryBtn(data);
     })
     .catch((err) => {
       console.log(err);
@@ -29,7 +31,54 @@ const handleErr = function () {
   });
 };
 
+
+// Creating button which allows the user to select a category
+
+
+const categoryBtn = function (data) {
+  const wrapperDiv = document.createElement("div");
+  const startBtnW = document.createElement("button");
+  const startBtnM = document.createElement("button");
+  const startBtnJ = document.createElement("button");
+  const startBtnE = document.createElement("button");
+
+  wrapperDiv.classList.add("wrapperDiv");
+  startBtnW.classList.add("btn", "women's clothing");
+  startBtnM.classList.add("btn", "men's clothing");
+  startBtnJ.classList.add("btn", "jewelry");
+  startBtnE.classList.add("btn", "electronics");
+
+  startBtnW.textContent = ("women's clothing").toUpperCase();
+  startBtnM.textContent = "men's clothing";
+  startBtnJ.textContent = "Jewelry";
+  startBtnE.textContent = "Electronics";
+
+  wrapperDiv.appendChild(startBtnW);
+  wrapperDiv.appendChild(startBtnM);
+  wrapperDiv.appendChild(startBtnJ);
+  wrapperDiv.appendChild(startBtnE);
+
+  document.body.appendChild(wrapperDiv);
+
+  const buttons = document.querySelectorAll(".btn");
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      const selectedCategory = data.filter(
+        (item) => item.category.toLowerCase() === e.target.classList[1]
+      );
+      $("#product-list").html("");
+      fetchData();
+      createElement(selectedCategory);
+    
+    });
+  });categoryBtn(data)
+}; 
+ 
+
+
 // defining a function to show the content on the page
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const createStartBtn = function () {
@@ -44,14 +93,20 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(wrapperDiv); // append the wrapper div to the document body
     startBtn.addEventListener("click", function () {
       // add click event to the button
+     
       fetchData();
 
       $(".wrapperDiv").hide();
+       categoryBtn(data)
     });
   };
 
   createStartBtn(); // create and append the button to the DOM
+  
 });
+
+
+
 
 // creating dropdownMenu
 
@@ -184,17 +239,3 @@ const printStars = function (number) {
   return result;
 };
 
-const cart = {};
-
-
-$(document).on("click", ".addToCartBtn", function () {
-  var $product = $(this).closest(".product");
-  var title = $product.find("h2").text();
-  var price = $product
-    .find(".price")
-    .text()
-    .replace("Price: ", "")
-    .replace("$", "");
-  cart[title] = price;
-  console.log(cart);
-});
