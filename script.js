@@ -138,7 +138,9 @@ const displayDropDown = function (data) {
 
   let dropdownMenuList = document.querySelectorAll(".dropdownMenu li");
   const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = new URLSearchParams(window.location.search);
   dropdownMenuList.forEach(function (item) {
+    urlParams.append('category', e.target.className);
     item.addEventListener("click", function (e) {
       const selectedCategory = data.filter(
         (item) => item.category === e.target.className,
@@ -147,6 +149,7 @@ const displayDropDown = function (data) {
         // Selecting all products
 
         $(".allProducts").click(function () {
+          urlParams.delete('category');
           $("#product-list").html("");
           createElement(data);
           toggleDescription();
