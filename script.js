@@ -137,10 +137,12 @@ const displayDropDown = function (data) {
   });
 
   let dropdownMenuList = document.querySelectorAll(".dropdownMenu li");
+  const urlParams = new URLSearchParams(window.location.search);
   dropdownMenuList.forEach(function (item) {
     item.addEventListener("click", function (e) {
       const selectedCategory = data.filter(
         (item) => item.category === e.target.className,
+         urlParams.append('category', e.target.className),
 
         // Selecting all products
 
