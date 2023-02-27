@@ -34,7 +34,7 @@ const handleErr = function () {
 
 // Creating button which allows the user to select a category
 
-/*
+
 const categoryBtn = function (data) {
   const wrapperDiv = document.createElement("div");
   const startBtnW = document.createElement("button");
@@ -74,7 +74,7 @@ const categoryBtn = function (data) {
     });
   });categoryBtn(data)
 }; 
- */
+ 
 
 
 // defining a function to show the content on the page
