@@ -8,7 +8,7 @@ const fetchData = function () {
       console.log(data)
       createElement(data);
       displayDropDown(data);
-    categoryBtn(data);
+   // categoryBtn(data);
     })
     .catch((err) => {
       console.log(err);
@@ -34,7 +34,7 @@ const handleErr = function () {
 
 // Creating button which allows the user to select a category
 
-
+/*
 const categoryBtn = function (data) {
   const wrapperDiv = document.createElement("div");
   const startBtnW = document.createElement("button");
@@ -74,7 +74,7 @@ const categoryBtn = function (data) {
     });
   });categoryBtn(data)
 }; 
- 
+ */
 
 
 // defining a function to show the content on the page
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       fetchData();
 
       $(".wrapperDiv").hide();
-       categoryBtn(data)
+     //  categoryBtn(data)
     });
   };
 
