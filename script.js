@@ -1,14 +1,13 @@
-"use strict";
-
 // fetches data from the API and displays it on the page
 const fetchData = function () {
   fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
-      createElement(data);
+    createElement(data);
       displayDropDown(data);
    // categoryBtn(data);
+    
     })
     .catch((err) => {
       console.log(err);
@@ -34,6 +33,7 @@ const handleErr = function () {
 
 // Creating button which allows the user to select a category
 
+/*
 
 const categoryBtn = function (data) {
   const wrapperDiv = document.createElement("div");
@@ -72,9 +72,9 @@ const categoryBtn = function (data) {
       createElement(selectedCategory);
     
     });
-  });categoryBtn(data)
+  });categoryBtn(fetchData())
 }; 
- 
+ */
 
 
 // defining a function to show the content on the page
@@ -94,17 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
     startBtn.addEventListener("click", function () {
       // add click event to the button
      
-      fetchData();
-
+     fetchData();
+ 
       $(".wrapperDiv").hide();
-     //  categoryBtn(data)
+      
     });
   };
 
   createStartBtn(); // create and append the button to the DOM
   
 });
-
 
 
 
@@ -138,13 +137,12 @@ const displayDropDown = function (data) {
 
   let dropdownMenuList = document.querySelectorAll(".dropdownMenu li");
   const urlParams = new URLSearchParams(window.location.search);
-  const urlParams = new URLSearchParams(window.location.search);
   dropdownMenuList.forEach(function (item) {
-    urlParams.append('category', e.target.className);
     item.addEventListener("click", function (e) {
+      urlParams.append('category', e.target.className);
       const selectedCategory = data.filter(
         (item) => item.category === e.target.className,
-         urlParams.append('category', e.target.className),
+        
 
         // Selecting all products
 
@@ -243,4 +241,3 @@ const printStars = function (number) {
   }
   return result;
 };
-
